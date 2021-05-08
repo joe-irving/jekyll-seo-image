@@ -1,4 +1,5 @@
 title: Jekyll SEO Image Generator
+baseurl: jekyll-seo-image
 
 seo-image:
   input: background
