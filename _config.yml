@@ -1,0 +1,14 @@
+title: Jekyll SEO Image Generator
+
+seo-image:
+  input: background
+  out_path: assets/images/
+  text:
+    color: "#091466"
+    font: "/assets/fonts/Rubik-Black.ttf"
+  logo: /assets/images/drax-pp.png
+
+plugins:
+  - jekyll-seo-image
+
+theme: minima
