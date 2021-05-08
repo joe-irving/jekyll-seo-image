@@ -65,15 +65,22 @@ module SeoImage
             c.gravity 'north'
             c.draw "text 0,70 '#{post.data["title"]}'"
             c.pointsize 70
-            c.font config["text"]["font"]
+            c.font File.join(site.config["source"],config["text"]["font"])
             c.fill(config["text"]["color"])
           end
           image.format ext
           image.write out_path
-          # output = Jekyll::StaticFile.new(site,site.config["source"],config["out_path"],out_name)
-          site.static_files << Jekyll::StaticFile.new(site,site.config["source"],config["out_path"],out_name)
-          # output.write(out_path)
+          new_image_file = Jekyll::StaticFile.new(site, site.config["source"], config["out_path"],out_name)
           post.data["image"] = File.join(config["out_path"],out_name)
+          site.static_files << new_image_file
+          # new_image_file.content = File.read(image.path)
+          # new_image_file.data["layout"] = nil
+          # site.pages << new_image_file
+          # puts new_image_file.path
+          # output = Jekyll::StaticFile.new(site,site.config["source"],config["out_path"],out_name)
+          # site.static_files << Jekyll::StaticFile.new(site,site.config["source"],config["out_path"],out_name)
+          # output.write(out_path)
+          # post.data["image"] = File.join(config["out_path"],out_name)
         end
       end
     end
